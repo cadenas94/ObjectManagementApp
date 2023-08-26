@@ -16,12 +16,12 @@ namespace ObjectManagementApp
         {
             base.OnModelCreating(modelBuilder);
 
-            //Use of Fluent API to define the types     
+            //Use of Fluent API to define the object properties     
             modelBuilder.Entity<ObjectM>().Property(prop => prop.Name).HasMaxLength(20).IsRequired();
             modelBuilder.Entity<ObjectM>().Property(prop => prop.Description).HasMaxLength(50);
             modelBuilder.Entity<ObjectM>().Property(prop => prop.Type).HasMaxLength(20);
         }
-
+        //Define the table which will contain the objects
         public DbSet<ObjectM> Objects { get; set; }
     }
 }
