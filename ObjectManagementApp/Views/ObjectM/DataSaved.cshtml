@@ -1,0 +1,42 @@
+﻿@using ObjectManagementApp.DTO;
+@model ObjectMListDTO
+@{
+    ViewData["Title"] = "Historical Data";
+}
+<div class="text-center">
+    <h1 class="display-4">Data Saved</h1>
+    <p>
+        Input Objects
+    </p>
+</div>
+<table class="table" style="font-size: 20px">
+    <thead>
+        <tr style="background-color: lightblue">
+            <th style="text-decoration: none">Name</th>
+            <th style="text-align: right">Description</th>
+            <th style="text-align: right">Type</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var objectM in Model.ObjectList)
+        {
+            <tr>
+                <td>
+                    <a style="text-decoration: none;">
+                        @objectM.Name.ToString()
+                    </a>
+                    <a asp-action="Edit" asp-route-id="@objectM.Id" class="btn-primary btn">
+                        <i class="bi-pencil-fill"></i>
+                    </a>
+                    <a asp-action="Remove" asp-route-id="@objectM.Id" class="btn-danger btn">
+                        <i class="bi-trash-fill"></i>
+                    </a>
+                </td>
+                <td style="text-align: right">@objectM.Description.ToString()</td>
+                <td style="text-align: right">@objectM.Type.ToString()</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a class="btn btn-secondary" asp-action="Create">Create other object</a>
